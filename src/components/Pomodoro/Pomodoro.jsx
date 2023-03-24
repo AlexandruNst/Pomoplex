@@ -3,32 +3,18 @@ import './Pomodoro.scss'
 
 export default function Pomodoro(props) {
     const [timer, setTimer] = useState("00:00")
-    // const [minutes, setMinutes] = useState(5)
-    // const [timerTicking, setTimerTicking] = useState(true)
 
-    // function toggleTimer() {
-    //     setTimerTicking(oldTimerTicking => !oldTimerTicking)
-    //     if (props.minutes === 0) props.setMinutes(5)
-    // }
-
-    // useEffect(() => {
-    //     setTimer(`updated ${props.minutes}`)
-    //     if (props.minutes === 0) setTimerTicking(false)
-    // }, [props.minutes])
-
-    // useEffect(() => {
-    //     if (timerTicking) {
-    //         const timerInterval = setInterval(() => {
-    //             props.setMinutes(oldMinutes => oldMinutes - 1)
-    //         }, 1000)
-    //         return () => clearInterval(timerInterval)
-    //     }
-    // }, [timerTicking])
+    function generateTimer(timerSeconds) {
+        const minutes = Math.floor(timerSeconds / 60)
+        const seconds = timerSeconds % 60;
+        const newTimer = `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
+        // const newTimer = "asdasd"
+        return newTimer
+    }
 
     useEffect(() => {
-        setTimer(`updated ${props.minutes}`)
-        // if (props.minutes === 0) props.toggleTimer()
-    }, [props.minutes])
+        setTimer(`${generateTimer(props.seconds)}`)
+    }, [props.seconds])
 
 
     return (

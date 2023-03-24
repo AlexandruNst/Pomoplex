@@ -9,24 +9,26 @@ function App() {
     shortBreak: 10,
     longBreak: 20
   })
-
-  const [minutes, setMinutes] = useState(5)
-  const [timerTicking, setTimerTicking] = useState(true)
+  const [seconds, setSeconds] = useState(5)
+  const [timerTicking, setTimerTicking] = useState(false)
 
   function toggleTimer() {
-    if (minutes <= 0) setMinutes(config.pomoTime)
+    if (seconds <= 0) setSeconds(minutesToSeconds(config.pomoTime))
     setTimerTicking(oldTimerTicking => !oldTimerTicking)
-    // if (minutes === 0) setMinutes(5)
+  }
+
+  function minutesToSeconds(minutes) {
+    return minutes * 60
   }
 
   useEffect(() => {
-    if (minutes <= 0) setTimerTicking(false)
-  }, [minutes])
+    if (seconds <= 0) setTimerTicking(false)
+  }, [seconds])
 
   useEffect(() => {
     if (timerTicking) {
       const timerInterval = setInterval(() => {
-        setMinutes(oldMinutes => oldMinutes - 1)
+        setSeconds(oldMinutes => oldMinutes - 1)
       }, 1000)
       return () => clearInterval(timerInterval)
     }
@@ -53,7 +55,7 @@ function App() {
     <main>
       <h1>Pomodoro</h1>
       <Pomodoro
-        minutes={minutes}
+        seconds={seconds}
         toggleTimer={toggleTimer}
       />
       <PomodoroButton
