@@ -1,26 +1,71 @@
+import PomodoroTimer from "../PomodoroTimer/PomodoroTimer"
+import TimerConfig from "../TimerConfig/TimerConfig"
+import PomodoroButton from "../PomodoroButton/PomodoroButton"
 import { useEffect, useState } from 'react'
 import './Pomodoro.scss'
 
-export default function Pomodoro(props) {
-    const [timer, setTimer] = useState("00:00")
+export default function Pomodoro() {
+    const [config, setConfig] = useState({
+        pomoTime: 7,
+        shortBreak: 10,
+        longBreak: 20
+    })
+    const [seconds, setSeconds] = useState(5)
+    const [timerTicking, setTimerTicking] = useState(false)
 
-    function generateTimer(timerSeconds) {
-        const minutes = Math.floor(timerSeconds / 60)
-        const seconds = timerSeconds % 60;
-        const newTimer = `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
-        // const newTimer = "asdasd"
-        return newTimer
+    function toggleTimer() {
+        if (seconds <= 0) setSeconds(minutesToSeconds(config.pomoTime))
+        setTimerTicking(oldTimerTicking => !oldTimerTicking)
+    }
+
+    function minutesToSeconds(minutes) {
+        return minutes * 60
     }
 
     useEffect(() => {
-        setTimer(`${generateTimer(props.seconds)}`)
-    }, [props.seconds])
+        if (seconds <= 0) setTimerTicking(false)
+    }, [seconds])
 
+    useEffect(() => {
+        if (timerTicking) {
+            const timerInterval = setInterval(() => {
+                setSeconds(oldMinutes => oldMinutes - 1)
+            }, 1000)
+            return () => clearInterval(timerInterval)
+        }
+    }, [timerTicking])
+
+
+    function incrementTimer() {
+        setConfig(oldConfig => ({
+            ...oldConfig,
+            pomoTime: oldConfig.pomoTime + 1
+        }))
+    }
+
+    function decrementTimer() {
+        setConfig(oldConfig => ({
+            ...oldConfig,
+            pomoTime: oldConfig.pomoTime > 1 ? oldConfig.pomoTime - 1 : 1
+        }))
+    }
 
     return (
-        <div className="pomodoro">
-            <h2 className="pomodoro--title">{timer}</h2>
-
-        </div>
+        <main>
+            <h1>Pomodoro</h1>
+            <PomodoroTimer
+                seconds={seconds}
+                toggleTimer={toggleTimer}
+            />
+            <PomodoroButton
+                toggleTimer={toggleTimer}
+                timerTicking={timerTicking}
+            />
+            <TimerConfig
+                minutes={config.pomoTime}
+                incrementTimer={incrementTimer}
+                decrementTimer={decrementTimer}
+            />
+        </main>
     )
 }
