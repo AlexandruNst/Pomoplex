@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <Pomodoro />
+      <h1>Tasks below</h1>
       <Tasks />
     </>
   )
