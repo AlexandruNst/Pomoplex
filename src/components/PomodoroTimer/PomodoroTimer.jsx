@@ -19,8 +19,7 @@ export default function PomodoroTimer(props) {
 
     return (
         <div className="pomodoro">
-            <h2 className="pomodoro--title">{timer}</h2>
-
+            <h2 className="pomodoro--timer">{timer}</h2>
         </div>
     )
 }

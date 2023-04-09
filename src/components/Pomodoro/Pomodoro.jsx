@@ -51,8 +51,7 @@ export default function Pomodoro() {
     }
 
     return (
-        <main>
-            <h1>Pomodoro</h1>
+        <section>
             <PomodoroTimer
                 seconds={seconds}
                 toggleTimer={toggleTimer}
@@ -66,6 +65,6 @@ export default function Pomodoro() {
                 incrementTimer={incrementTimer}
                 decrementTimer={decrementTimer}
             />
-        </main>
+        </section>
     )
 }
