@@ -1,8 +1,8 @@
 import PomodoroTimer from "../PomodoroTimer/PomodoroTimer"
 import TimerConfig from "../TimerConfig/TimerConfig"
-import PomodoroButton from "../PomodoroButton/PomodoroButton"
 import { useEffect, useState } from 'react'
 import './Pomodoro.scss'
+import PomodoroButtons from "../PomodoroButtons/PomodoroButtons"
 
 export default function Pomodoro() {
     const [config, setConfig] = useState({
@@ -16,6 +16,11 @@ export default function Pomodoro() {
     function toggleTimer() {
         if (seconds <= 0) setSeconds(minutesToSeconds(config.pomoTime))
         setTimerTicking(oldTimerTicking => !oldTimerTicking)
+    }
+
+    function resetTimer() {
+        setSeconds(minutesToSeconds(config.pomoTime))
+        setTimerTicking(false)
     }
 
     function minutesToSeconds(minutes) {
@@ -37,17 +42,21 @@ export default function Pomodoro() {
 
 
     function incrementTimer() {
+        const newTime = config.pomoTime + 1
         setConfig(oldConfig => ({
             ...oldConfig,
-            pomoTime: oldConfig.pomoTime + 1
+            pomoTime: newTime
         }))
+        !timerTicking && setSeconds(minutesToSeconds(newTime))
     }
 
     function decrementTimer() {
+        const newTime = config.pomoTime > 1 ? config.pomoTime - 1 : 1
         setConfig(oldConfig => ({
             ...oldConfig,
-            pomoTime: oldConfig.pomoTime > 1 ? oldConfig.pomoTime - 1 : 1
+            pomoTime: newTime
         }))
+        !timerTicking && setSeconds(minutesToSeconds(newTime))
     }
 
     return (
@@ -56,8 +65,9 @@ export default function Pomodoro() {
                 seconds={seconds}
                 toggleTimer={toggleTimer}
             />
-            <PomodoroButton
+            <PomodoroButtons
                 toggleTimer={toggleTimer}
+                resetTimer={resetTimer}
                 timerTicking={timerTicking}
             />
             <TimerConfig
