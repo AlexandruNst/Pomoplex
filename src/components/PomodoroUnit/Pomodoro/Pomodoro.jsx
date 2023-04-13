@@ -3,6 +3,7 @@ import TimerConfig from "../TimerConfig/TimerConfig"
 import { useEffect, useState } from 'react'
 import './Pomodoro.scss'
 import PomodoroButtons from "../PomodoroButtons/PomodoroButtons"
+import PomodoroInfo from "../PomodoroInfo/PomodoroInfo"
 
 export default function Pomodoro() {
     const [config, setConfig] = useState({
@@ -65,11 +66,17 @@ export default function Pomodoro() {
                 seconds={seconds}
                 toggleTimer={toggleTimer}
             />
-            <PomodoroButtons
-                toggleTimer={toggleTimer}
-                resetTimer={resetTimer}
-                timerTicking={timerTicking}
-            />
+            <div className="pomodoro-utils">
+                <PomodoroInfo />
+                <PomodoroButtons
+                    toggleTimer={toggleTimer}
+                    resetTimer={resetTimer}
+                    timerTicking={timerTicking}
+                />
+            </div>
+
+            <hr />
+
             <TimerConfig
                 minutes={config.pomoTime}
                 incrementTimer={incrementTimer}

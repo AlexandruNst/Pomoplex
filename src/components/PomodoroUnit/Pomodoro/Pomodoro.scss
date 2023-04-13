@@ -1,5 +1,11 @@
-.pomodoro {
-    .pomodoro--title {
-        color: purple;
-    }
+.pomodoro-utils {
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(227, 238, 241, 0), rgba(227, 238, 241, 0.75), rgba(227, 238, 241, 0));
 }

@@ -1,8 +1,9 @@
-import PomodoroButton from "../PomodoroButton/PomodoroButton";
+import PomodoroButton from "../../Util/Button/Button";
+import "./PomodoroButtons.scss"
 
 export default function PomodoroButtons(props) {
     return (
-        <>
+        <div className="pomodoro-bttns-wrapper">
             <PomodoroButton
                 handleClick={props.resetTimer}
                 primary={false}
@@ -15,6 +16,6 @@ export default function PomodoroButtons(props) {
                 buttonSymbol="start"
                 buttonSymbolTimerTicking="pause"
             />
-        </>
+        </div>
     )
 }

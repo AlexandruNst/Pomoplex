@@ -1,4 +1,4 @@
-import './PomodoroButton.scss'
+import './Button.scss'
 
 const symbolNames = {
     pause: "pause",
@@ -8,7 +8,13 @@ const symbolNames = {
 
 export default function PomodoroButton(props) {
     return (
-        <button onClick={props.handleClick}>
+        <button
+            className={
+                `bttn ${props.primary ?
+                    "bttn-primary" :
+                    "bttn-secondary"}`
+            }
+            onClick={props.handleClick}>
             <span class="material-symbols-outlined">
                 {props.timerTicking ?
                     symbolNames[props.buttonSymbolTimerTicking] :

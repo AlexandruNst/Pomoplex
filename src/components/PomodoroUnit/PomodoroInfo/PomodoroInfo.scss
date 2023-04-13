@@ -1,0 +1,19 @@
+@import "../../../utilities/variables.scss";
+
+
+.pomodoro-info {
+    .title {
+        color: $off-white;
+        font-weight: 700;
+        font-size: 49px;
+        margin: 0;
+    }
+
+    .info {
+        color: $off-white;
+        font-weight: 500;
+        font-size: 13px;
+        opacity: 0.65;
+        margin: 0;
+    }
+}

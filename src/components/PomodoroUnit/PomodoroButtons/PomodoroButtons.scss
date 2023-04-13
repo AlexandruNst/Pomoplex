@@ -1,0 +1,9 @@
+.pomodoro-bttns-wrapper {
+    display: flex;
+    margin-top: 10px;
+
+    button:not(:first-of-type) {
+        margin-left: 10px;
+    }
+
+}
