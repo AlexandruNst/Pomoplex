@@ -1,6 +1,21 @@
+@import "../../../utilities/variables.scss";
+
 .pomodoro-bttns-wrapper {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
     margin-top: 10px;
+
+
+    aside {
+        flex-basis: 100%;
+        text-align: end;
+        color: $off-white;
+        font-weight: 500;
+        font-size: 13px;
+        opacity: 0.65;
+        margin: 0;
+    }
 
     button:not(:first-of-type) {
         margin-left: 10px;

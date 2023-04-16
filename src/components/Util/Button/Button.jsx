@@ -6,7 +6,7 @@ const symbolNames = {
     reset: "replay"
 }
 
-export default function PomodoroButton(props) {
+export default function Button(props) {
     return (
         <button
             className={
@@ -14,7 +14,10 @@ export default function PomodoroButton(props) {
                     "bttn-primary" :
                     "bttn-secondary"}`
             }
-            onClick={props.handleClick}>
+            onClick={props.handleClick}
+            onMouseEnter={props.displayInfo}
+            onMouseLeave={props.undisplayInfo}
+        >
             <span class="material-symbols-outlined">
                 {props.timerTicking ?
                     symbolNames[props.buttonSymbolTimerTicking] :
