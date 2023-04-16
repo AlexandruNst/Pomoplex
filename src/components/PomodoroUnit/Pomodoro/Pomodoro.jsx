@@ -7,20 +7,29 @@ import PomodoroInfo from "../PomodoroInfo/PomodoroInfo"
 
 export default function Pomodoro() {
     const [config, setConfig] = useState({
-        pomoTime: 7,
-        shortBreak: 10,
-        longBreak: 20
+        pomoTime: 0.15,
+        breakTime: 0.1
     })
     const [seconds, setSeconds] = useState(5)
     const [timerTicking, setTimerTicking] = useState(false)
+    const [inPomo, setInPomo] = useState(true)
+    const [pomoStarted, setPomoStarted] = useState(true)
+    const [completedPomos, setCompletedPomos] = useState(0)
 
     function toggleTimer() {
-        if (seconds <= 0) setSeconds(minutesToSeconds(config.pomoTime))
+        if (inPomo && !pomoStarted) setPomoStarted(true)
+        else if (!inPomo && pomoStarted) setPomoStarted(false)
         setTimerTicking(oldTimerTicking => !oldTimerTicking)
     }
 
     function resetTimer() {
-        setSeconds(minutesToSeconds(config.pomoTime))
+        if (pomoStarted) {
+            setSeconds(minutesToSeconds(config.pomoTime))
+            setInPomo(true)
+        } else {
+            setSeconds(minutesToSeconds(config.breakTime))
+            setInPomo(false)
+        }
         setTimerTicking(false)
     }
 
@@ -29,13 +38,21 @@ export default function Pomodoro() {
     }
 
     useEffect(() => {
-        if (seconds <= 0) setTimerTicking(false)
+        if (seconds <= 0) {
+            setTimerTicking(false)
+            if (inPomo) {
+                setSeconds(minutesToSeconds(config.breakTime))
+                setCompletedPomos(oldCompletedPomos => oldCompletedPomos + 1)
+            } else
+                setSeconds(minutesToSeconds(config.pomoTime))
+            setInPomo(oldInPomo => !oldInPomo)
+        }
     }, [seconds])
 
     useEffect(() => {
         if (timerTicking) {
             const timerInterval = setInterval(() => {
-                setSeconds(oldMinutes => oldMinutes - 1)
+                setSeconds(oldSeconds => oldSeconds - 1)
             }, 1000)
             return () => clearInterval(timerInterval)
         }
@@ -67,7 +84,10 @@ export default function Pomodoro() {
                 toggleTimer={toggleTimer}
             />
             <div className="pomodoro-utils">
-                <PomodoroInfo />
+                <PomodoroInfo
+                    inPomo={inPomo}
+                    completedPomos={completedPomos}
+                />
                 <PomodoroButtons
                     toggleTimer={toggleTimer}
                     resetTimer={resetTimer}
