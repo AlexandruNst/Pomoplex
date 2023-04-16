@@ -92,6 +92,8 @@ export default function Pomodoro() {
                     toggleTimer={toggleTimer}
                     resetTimer={resetTimer}
                     timerTicking={timerTicking}
+                    inPomo={inPomo}
+                    pomoStarted={pomoStarted}
                 />
             </div>
 

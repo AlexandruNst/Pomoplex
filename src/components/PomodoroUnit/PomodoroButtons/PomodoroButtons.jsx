@@ -4,9 +4,23 @@ import "./PomodoroButtons.scss"
 
 export default function PomodoroButtons(props) {
     const [showDisplayInfo, setShowDisplayInfo] = useState(false)
+    const [info, setInfo] = useState("Dummy info")
 
-    function displayInfo() {
+    function displayInfo(source) {
         setShowDisplayInfo(true)
+        if (source === "reset") {
+            if (props.pomoStarted) {
+                setInfo("Restart Pomo")
+            } else if (!props.pomoStarted) {
+                setInfo("Restart Break")
+            }
+        } else if (source === "start") {
+            if (props.timerTicking) {
+                setInfo("Pause Timer")
+            } else {
+                setInfo("Start Timer")
+            }
+        }
     }
 
     function undisplayInfo() {
@@ -31,7 +45,7 @@ export default function PomodoroButtons(props) {
                 displayInfo={displayInfo}
                 undisplayInfo={undisplayInfo}
             />
-            {showDisplayInfo && <aside>Button info</aside>}
+            {showDisplayInfo && <aside>{info}</aside>}
         </div>
     )
 }

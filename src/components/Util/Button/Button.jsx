@@ -15,7 +15,7 @@ export default function Button(props) {
                     "bttn-secondary"}`
             }
             onClick={props.handleClick}
-            onMouseEnter={props.displayInfo}
+            onMouseMove={() => props.displayInfo(props.buttonSymbol)}
             onMouseLeave={props.undisplayInfo}
         >
             <span class="material-symbols-outlined">
