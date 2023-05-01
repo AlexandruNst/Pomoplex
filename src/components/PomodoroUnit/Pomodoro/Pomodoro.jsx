@@ -15,6 +15,11 @@ export default function Pomodoro() {
     const [inPomo, setInPomo] = useState(true)
     const [pomoStarted, setPomoStarted] = useState(true)
     const [completedPomos, setCompletedPomos] = useState(0)
+    const [showConfig, setShowConfig] = useState(false)
+
+    function toggleShowConfig() {
+        setShowConfig(oldShowConfig => !oldShowConfig)
+    }
 
     function toggleTimer() {
         if (inPomo && !pomoStarted) setPomoStarted(true)
@@ -35,6 +40,24 @@ export default function Pomodoro() {
 
     function minutesToSeconds(minutes) {
         return minutes * 60
+    }
+
+    function incrementTimer() {
+        const newTime = config.pomoTime + 1
+        setConfig(oldConfig => ({
+            ...oldConfig,
+            pomoTime: newTime
+        }))
+        !timerTicking && setSeconds(minutesToSeconds(newTime))
+    }
+
+    function decrementTimer() {
+        const newTime = config.pomoTime > 1 ? config.pomoTime - 1 : 1
+        setConfig(oldConfig => ({
+            ...oldConfig,
+            pomoTime: newTime
+        }))
+        !timerTicking && setSeconds(minutesToSeconds(newTime))
     }
 
     useEffect(() => {
@@ -58,25 +81,6 @@ export default function Pomodoro() {
         }
     }, [timerTicking])
 
-
-    function incrementTimer() {
-        const newTime = config.pomoTime + 1
-        setConfig(oldConfig => ({
-            ...oldConfig,
-            pomoTime: newTime
-        }))
-        !timerTicking && setSeconds(minutesToSeconds(newTime))
-    }
-
-    function decrementTimer() {
-        const newTime = config.pomoTime > 1 ? config.pomoTime - 1 : 1
-        setConfig(oldConfig => ({
-            ...oldConfig,
-            pomoTime: newTime
-        }))
-        !timerTicking && setSeconds(minutesToSeconds(newTime))
-    }
-
     return (
         <section>
             <PomodoroTimer
@@ -91,19 +95,21 @@ export default function Pomodoro() {
                 <PomodoroButtons
                     toggleTimer={toggleTimer}
                     resetTimer={resetTimer}
+                    toggleShowConfig={toggleShowConfig}
                     timerTicking={timerTicking}
                     inPomo={inPomo}
                     pomoStarted={pomoStarted}
                 />
             </div>
 
+            {showConfig &&
+                <TimerConfig
+                    minutes={config.pomoTime}
+                    incrementTimer={incrementTimer}
+                    decrementTimer={decrementTimer}
+                />
+            }
             <hr />
-
-            <TimerConfig
-                minutes={config.pomoTime}
-                incrementTimer={incrementTimer}
-                decrementTimer={decrementTimer}
-            />
         </section>
     )
 }

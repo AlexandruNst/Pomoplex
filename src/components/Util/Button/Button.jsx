@@ -3,7 +3,8 @@ import './Button.scss'
 const symbolNames = {
     pause: "pause",
     start: "play_arrow",
-    reset: "replay"
+    reset: "replay",
+    tune: "tune"
 }
 
 export default function Button(props) {

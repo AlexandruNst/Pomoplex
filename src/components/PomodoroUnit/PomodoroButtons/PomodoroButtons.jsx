@@ -20,6 +20,8 @@ export default function PomodoroButtons(props) {
             } else {
                 setInfo("Start Timer")
             }
+        } else if (source === "tune") {
+            setInfo("Config Timer")
         }
     }
 
@@ -29,6 +31,13 @@ export default function PomodoroButtons(props) {
 
     return (
         <div className="pomodoro-bttns-wrapper">
+            <Button
+                handleClick={props.toggleShowConfig}
+                primary={false}
+                buttonSymbol="tune"
+                displayInfo={displayInfo}
+                undisplayInfo={undisplayInfo}
+            />
             <Button
                 handleClick={props.resetTimer}
                 primary={false}

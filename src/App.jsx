@@ -10,7 +10,6 @@ function App() {
         <article className="pomo-tasks">
           <div className="glass-card pomo-tasks-card">
             <Pomodoro />
-            <h1>Tasks below</h1>
             <Tasks />
           </div>
         </article>
