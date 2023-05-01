@@ -1,5 +1,6 @@
 import "./TimerConfig.scss"
 
+
 export default function TimerConfig(props) {
     return (
         <div className="timer-config">
