@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Pomodoro, Tasks } from './components'
+import { Pomodoro, Tasks, Music } from './components'
 import './App.scss'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         </article>
         <aside className="music">
           <div className="glass-card music-card">
-            Youtube wooo
+            <Music />
           </div>
         </aside>
       </main>

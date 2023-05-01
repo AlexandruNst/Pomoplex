@@ -7,10 +7,10 @@ import PomodoroInfo from "../PomodoroInfo/PomodoroInfo"
 
 export default function Pomodoro() {
     const [config, setConfig] = useState({
-        pomoTime: 0.15,
-        breakTime: 0.1
+        pomoTime: 25,
+        breakTime: 5
     })
-    const [seconds, setSeconds] = useState(5)
+    const [seconds, setSeconds] = useState(1500)
     const [timerTicking, setTimerTicking] = useState(false)
     const [inPomo, setInPomo] = useState(true)
     const [pomoStarted, setPomoStarted] = useState(true)
