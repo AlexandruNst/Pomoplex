@@ -15,7 +15,7 @@ export default function Pomodoro() {
     const [inPomo, setInPomo] = useState(true)
     const [pomoStarted, setPomoStarted] = useState(true)
     const [completedPomos, setCompletedPomos] = useState(0)
-    const [showConfig, setShowConfig] = useState(true)
+    const [showConfig, setShowConfig] = useState(false)
 
     function toggleShowConfig() {
         setShowConfig(oldShowConfig => !oldShowConfig)
