@@ -1,14 +1,14 @@
-// @import "../../../utilities/classes.scss";
+@import "../../../utilities/classes.scss";
 
 
 .timer-config {
-    // @extend .card;
+    @extend .card;
 
 
-    background-color: $bg-colour;
-    color: $off-white;
-    padding: 14px 23px;
-    border-radius: 15px;
+    // background-color: $bg-colour;
+    // color: $off-white;
+    // padding: 14px 23px;
+    // border-radius: 15px;
 
 
     display: flex;
