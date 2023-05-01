@@ -19,7 +19,7 @@ export default function Button(props) {
             onMouseMove={() => props.displayInfo(props.buttonSymbol)}
             onMouseLeave={props.undisplayInfo}
         >
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 {props.timerTicking ?
                     symbolNames[props.buttonSymbolTimerTicking] :
                     symbolNames[props.buttonSymbol]}

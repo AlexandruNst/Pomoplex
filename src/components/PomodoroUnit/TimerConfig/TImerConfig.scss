@@ -1,0 +1,31 @@
+@import "../../../utilities/classes.scss";
+
+
+.timer-config {
+    @extend .card;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+
+    p {
+        margin: 0;
+        padding: 0;
+
+        &.timer-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        span.material-symbols-outlined {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        span.timer-config-time {
+            font-family: 'Chivo Mono', monospace;
+        }
+    }
+}

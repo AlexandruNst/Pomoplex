@@ -15,7 +15,7 @@ export default function Pomodoro() {
     const [inPomo, setInPomo] = useState(true)
     const [pomoStarted, setPomoStarted] = useState(true)
     const [completedPomos, setCompletedPomos] = useState(0)
-    const [showConfig, setShowConfig] = useState(false)
+    const [showConfig, setShowConfig] = useState(true)
 
     function toggleShowConfig() {
         setShowConfig(oldShowConfig => !oldShowConfig)
@@ -42,8 +42,26 @@ export default function Pomodoro() {
         return minutes * 60
     }
 
-    function incrementTimer() {
-        const newTime = config.pomoTime + 1
+    function changeTimer(source, direction, margintude) {
+        if (source === "pomo") {
+            if (direction === "increase") {
+                if (margintude === "small") {
+                    incrementTimer(1);
+                } else {
+                    incrementTimer(5);
+                }
+            } else {
+                if (margintude === "small") {
+                    decrementTimer(1);
+                } else {
+                    decrementTimer(5);
+                }
+            }
+        }
+    }
+
+    function incrementTimer(quantity) {
+        const newTime = config.pomoTime + quantity
         setConfig(oldConfig => ({
             ...oldConfig,
             pomoTime: newTime
@@ -51,8 +69,8 @@ export default function Pomodoro() {
         !timerTicking && setSeconds(minutesToSeconds(newTime))
     }
 
-    function decrementTimer() {
-        const newTime = config.pomoTime > 1 ? config.pomoTime - 1 : 1
+    function decrementTimer(quantity) {
+        const newTime = config.pomoTime - quantity > 1 ? config.pomoTime - quantity : 1
         setConfig(oldConfig => ({
             ...oldConfig,
             pomoTime: newTime
@@ -105,8 +123,9 @@ export default function Pomodoro() {
             {showConfig &&
                 <TimerConfig
                     minutes={config.pomoTime}
-                    incrementTimer={incrementTimer}
-                    decrementTimer={decrementTimer}
+                    changeTimer={changeTimer}
+                // incrementTimer={incrementTimer}
+                // decrementTimer={decrementTimer}
                 />
             }
             <hr />
