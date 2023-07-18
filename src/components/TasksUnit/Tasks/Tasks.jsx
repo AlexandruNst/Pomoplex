@@ -13,17 +13,23 @@ export default function Tasks() {
         setShowNewTask(oldShowNewTask => !oldShowNewTask)
     }
 
+    function addNewTask(task) {
+        setTasks(oldTasks => [...oldTasks, task])
+    }
+
     return (
         <div className="tasks">
-            <h2 className="title">Tasks</h2>
-            <Button
-                handleClick={toggleNewTask}
-                primary={true}
-                alternative={showNewTask}
-                buttonSymbol={"add"}
-                buttonSymbolAlternative={"close"}
-            />
-            {showNewTask && <NewTask />}
+            <section className="tasks-title-section">
+                <h2 className="title">Tasks</h2>
+                <Button className="tasks-button"
+                    handleClick={toggleNewTask}
+                    primary={true}
+                    alternative={showNewTask}
+                    buttonSymbol={"add"}
+                    buttonSymbolAlternative={"close"}
+                />
+            </section>
+            {showNewTask && <NewTask addNewTask={addNewTask} />}
             <TasksList
                 tasks={tasks}
             />

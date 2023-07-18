@@ -2,10 +2,17 @@
 
 
 .tasks {
-    .title {
-        color: $off-white;
-        font-weight: 700;
-        font-size: 49px;
-        margin: 0;
+    .tasks-title-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            color: $off-white;
+            font-weight: 700;
+            font-size: 49px;
+            margin: 0;
+        }
     }
+
 }
