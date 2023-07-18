@@ -47,10 +47,10 @@ export default function PomodoroButtons(props) {
             />
             <Button
                 handleClick={props.toggleTimer}
-                timerTicking={props.timerTicking}
+                alternative={props.timerTicking}
                 primary={true}
                 buttonSymbol="start"
-                buttonSymbolTimerTicking="pause"
+                buttonSymbolAlternative="pause"
                 displayInfo={displayInfo}
                 undisplayInfo={undisplayInfo}
             />

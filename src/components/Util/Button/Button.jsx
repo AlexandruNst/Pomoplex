@@ -4,7 +4,9 @@ const symbolNames = {
     pause: "pause",
     start: "play_arrow",
     reset: "replay",
-    tune: "tune"
+    tune: "tune",
+    add: "add",
+    close: "close"
 }
 
 export default function Button(props) {
@@ -20,8 +22,8 @@ export default function Button(props) {
             onMouseLeave={props.undisplayInfo}
         >
             <span className="material-symbols-outlined">
-                {props.timerTicking ?
-                    symbolNames[props.buttonSymbolTimerTicking] :
+                {props.alternative ?
+                    symbolNames[props.buttonSymbolAlternative] :
                     symbolNames[props.buttonSymbol]}
             </span>
         </button>
