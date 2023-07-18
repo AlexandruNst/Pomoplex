@@ -7,6 +7,8 @@ export default function TasksList(props) {
             {props.tasks.map((task, index) => (
                 <Task
                     task={task}
+                    taskIndex={index}
+                    toggleTaskDone={props.toggleTaskDone}
                 />
             ))}
         </article>

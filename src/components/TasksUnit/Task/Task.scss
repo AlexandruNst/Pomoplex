@@ -5,4 +5,18 @@
     @extend .card;
     margin-top: 15px;
     box-shadow: 0px 8px 15px 1px $secondary-glow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &.completed {
+        .task-text {
+            color: $primary-colour;
+            text-decoration: line-through;
+        }
+
+        #task-done-button {
+            color: $primary-colour;
+        }
+    }
 }

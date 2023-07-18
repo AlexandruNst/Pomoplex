@@ -6,7 +6,16 @@ import Button from '../../Util/Button/Button'
 
 export default function Tasks() {
 
-    const [tasks, setTasks] = useState(["Task a", "Task b"])
+    const [tasks, setTasks] = useState([
+        {
+            text: "Task a",
+            completed: false
+        },
+        {
+            text: "Task b",
+            completed: false
+        }
+    ])
     const [showNewTask, setShowNewTask] = useState(true);
 
     function toggleNewTask() {
@@ -14,7 +23,19 @@ export default function Tasks() {
     }
 
     function addNewTask(task) {
-        setTasks(oldTasks => [...oldTasks, task])
+        setTasks(oldTasks => [...oldTasks, { text: task, completed: false }])
+    }
+
+    function toggleTaskDone(taskIndex) {
+        setTasks(oldTasks => oldTasks.map((task, index) => {
+            if (index !== taskIndex) return task
+            else {
+                return {
+                    ...task,
+                    completed: !task.completed
+                }
+            }
+        }))
     }
 
     return (
@@ -32,6 +53,7 @@ export default function Tasks() {
             {showNewTask && <NewTask addNewTask={addNewTask} />}
             <TasksList
                 tasks={tasks}
+                toggleTaskDone={toggleTaskDone}
             />
         </div>
     )
