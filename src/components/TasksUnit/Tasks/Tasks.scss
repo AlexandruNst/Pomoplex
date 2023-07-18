@@ -1,11 +1,7 @@
-@import "../../utilities/variables.scss";
+@import "../../../utilities/variables.scss";
 
 
 .tasks {
-    .task {
-        color: white;
-    }
-
     .title {
         color: $off-white;
         font-weight: 700;
