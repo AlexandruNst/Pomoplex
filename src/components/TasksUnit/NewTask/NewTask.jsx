@@ -12,6 +12,7 @@ export default function NewTask(props) {
     function handleSubmit(event) {
         event.preventDefault()
         props.addNewTask(taskText)
+        setTaskText("");
     }
 
     return (
