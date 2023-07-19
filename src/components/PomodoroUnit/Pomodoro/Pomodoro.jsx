@@ -117,6 +117,7 @@ export default function Pomodoro() {
                     timerTicking={timerTicking}
                     inPomo={inPomo}
                     pomoStarted={pomoStarted}
+                    showConfig={showConfig}
                 />
             </div>
 

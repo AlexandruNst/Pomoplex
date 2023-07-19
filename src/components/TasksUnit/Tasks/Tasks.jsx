@@ -17,9 +17,9 @@ export default function Tasks() {
             completed: false
         }
     ])
-    const [showNewTask, setShowNewTask] = useState(true)
-    const [showTaskButtonInfo, setShowTaskButtonInfo] = useState(true)
-    const [taskButtonInfo, setTaskButtonInfo] = useState("Dummy Info")
+    const [showNewTask, setShowNewTask] = useState(false)
+    const [showTaskButtonInfo, setShowTaskButtonInfo] = useState(false)
+    const [taskButtonInfo, setTaskButtonInfo] = useState("")
 
     function toggleNewTask() {
         setShowNewTask(oldShowNewTask => !oldShowNewTask)
@@ -45,10 +45,8 @@ export default function Tasks() {
         setTasks(oldTasks => oldTasks.filter((task, index) => index !== taskIndex))
     }
 
-    function displayInfo(buttonSymbol) {
+    function displayInfo() {
         setShowTaskButtonInfo(true)
-        // if (!showNewTask) setTaskButtonInfo("Add New Task")
-        // else if (showNewTask) setTaskButtonInfo("Close New Task")
     }
 
     function undisplayInfo() {
