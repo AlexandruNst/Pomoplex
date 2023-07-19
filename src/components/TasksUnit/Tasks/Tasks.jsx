@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TasksList from '../TasksList/TasksList'
 import './Tasks.scss'
 import NewTask from '../NewTask/NewTask';
 import Button from '../../Util/Button/Button'
+import TasksInfo from '../TasksInfo/TasksInfo';
 
 export default function Tasks() {
 
@@ -16,7 +17,9 @@ export default function Tasks() {
             completed: false
         }
     ])
-    const [showNewTask, setShowNewTask] = useState(true);
+    const [showNewTask, setShowNewTask] = useState(true)
+    const [showTaskButtonInfo, setShowTaskButtonInfo] = useState(true)
+    const [taskButtonInfo, setTaskButtonInfo] = useState("Dummy Info")
 
     function toggleNewTask() {
         setShowNewTask(oldShowNewTask => !oldShowNewTask)
@@ -42,6 +45,24 @@ export default function Tasks() {
         setTasks(oldTasks => oldTasks.filter((task, index) => index !== taskIndex))
     }
 
+    function displayInfo(buttonSymbol) {
+        setShowTaskButtonInfo(true)
+        // if (!showNewTask) setTaskButtonInfo("Add New Task")
+        // else if (showNewTask) setTaskButtonInfo("Close New Task")
+    }
+
+    function undisplayInfo() {
+        setShowTaskButtonInfo(false)
+    }
+
+    useEffect(() => {
+        if (!showNewTask) setTaskButtonInfo("Add New Task")
+        else if (showNewTask) setTaskButtonInfo("Close New Task")
+    }, [showNewTask])
+
+    let totalTasks = tasks.length
+    let completedTasks = tasks.reduce((acc, task) => task.completed ? acc + 1 : acc, 0)
+
     return (
         <div className="tasks">
             <section className="tasks-title-section">
@@ -52,8 +73,16 @@ export default function Tasks() {
                     alternative={showNewTask}
                     buttonSymbol={"add"}
                     buttonSymbolAlternative={"close"}
+                    displayInfo={displayInfo}
+                    undisplayInfo={undisplayInfo}
                 />
             </section>
+            <TasksInfo
+                totalTasks={totalTasks}
+                completedTasks={completedTasks}
+                showTaskButtonInfo={showTaskButtonInfo}
+                taskButtonInfo={taskButtonInfo}
+            />
             {showNewTask && <NewTask addNewTask={addNewTask} />}
             <TasksList
                 tasks={tasks}

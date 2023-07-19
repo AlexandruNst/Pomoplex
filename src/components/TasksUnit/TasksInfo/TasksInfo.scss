@@ -1,0 +1,22 @@
+@import "../../../utilities/variables.scss";
+
+.tasks-info {
+    display: flex;
+    justify-content: space-between;
+
+    aside {
+
+        font-size: 18px;
+
+        .tasks-info-opacity {
+            color: $off-white;
+            font-weight: 500;
+            font-size: 13px;
+            margin: 0;
+            opacity: 0.65;
+
+        }
+
+    }
+
+}
