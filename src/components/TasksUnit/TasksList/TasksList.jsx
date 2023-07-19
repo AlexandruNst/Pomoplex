@@ -9,6 +9,7 @@ export default function TasksList(props) {
                     task={task}
                     taskIndex={index}
                     toggleTaskDone={props.toggleTaskDone}
+                    deleteTask={props.deleteTask}
                 />
             ))}
         </article>

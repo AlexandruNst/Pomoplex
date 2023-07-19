@@ -38,6 +38,10 @@ export default function Tasks() {
         }))
     }
 
+    function deleteTask(taskIndex) {
+        setTasks(oldTasks => oldTasks.filter((task, index) => index !== taskIndex))
+    }
+
     return (
         <div className="tasks">
             <section className="tasks-title-section">
@@ -54,6 +58,7 @@ export default function Tasks() {
             <TasksList
                 tasks={tasks}
                 toggleTaskDone={toggleTaskDone}
+                deleteTask={deleteTask}
             />
         </div>
     )

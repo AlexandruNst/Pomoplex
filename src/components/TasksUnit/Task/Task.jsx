@@ -6,8 +6,9 @@ export default function Task(props) {
         <section className={`task ${props.task.completed ? "completed" : ""}`} >
             <div className="task-text">{props.task.text}</div>
             <TaskButtons
-                toggleTaskDone={props.toggleTaskDone}
                 taskIndex={props.taskIndex}
+                toggleTaskDone={props.toggleTaskDone}
+                deleteTask={props.deleteTask}
             />
         </section>
     )
