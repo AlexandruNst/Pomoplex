@@ -2,14 +2,26 @@
 
 
 .music {
-
     color: white;
 
+    .music-title-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-    .title {
-        color: $off-white;
-        font-weight: 700;
-        font-size: 49px;
-        margin: 0;
+        .title {
+            color: $off-white;
+            font-weight: 700;
+            font-size: 49px;
+            margin: 0;
+        }
     }
+
+}
+
+path {
+    color: white;
+    stroke: white;
+    fill: white;
+    background-color: white;
 }

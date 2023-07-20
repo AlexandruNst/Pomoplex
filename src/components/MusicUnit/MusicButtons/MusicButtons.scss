@@ -1,0 +1,7 @@
+.music-buttons {
+    display: flex;
+
+    button:not(:first-of-type) {
+        margin-left: 10px;
+    }
+}

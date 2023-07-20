@@ -1,4 +1,6 @@
 import './Button.scss'
+import spotify from '../../../assets/spotify.svg'
+import youtube from '../../../assets/youtube.svg'
 
 const symbolNames = {
     pause: "pause",
@@ -21,11 +23,18 @@ export default function Button(props) {
             onMouseMove={props.displayInfo}
             onMouseLeave={props.undisplayInfo}
         >
-            <span className="material-symbols-outlined">
-                {props.alternative ?
-                    symbolNames[props.buttonSymbolAlternative] :
-                    symbolNames[props.buttonSymbol]}
-            </span>
+            {props.buttonSymbol &&
+                <span className="material-symbols-outlined">
+                    {props.alternative ?
+                        symbolNames[props.buttonSymbolAlternative] :
+                        symbolNames[props.buttonSymbol]}
+                </span>
+            }
+
+            {props.img &&
+                (props.img === "spotify" ? <img src={spotify} alt="" /> : <img src={youtube} alt="" />)
+            }
+
         </button>
     )
 }
