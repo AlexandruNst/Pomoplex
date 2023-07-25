@@ -16,7 +16,7 @@ export default function MusicButtons() {
 
     return (
         <div className="music-buttons">
-            {channel === "spotify" &&
+            {/* {channel === "spotify" &&
                 <>
                     <Button
                         primary={true}
@@ -44,7 +44,18 @@ export default function MusicButtons() {
                         handleClick={setChannelToYoutube}
                     />
                 </>
-            }
+            } */}
+
+            <Button
+                primary={channel === "spotify" ? true : false}
+                img={"spotify"}
+                handleClick={setChannelToSpotify}
+            />
+            <Button
+                primary={channel === "youtube" ? true : false}
+                img={"youtube"}
+                handleClick={setChannelToYoutube}
+            />
 
             {/* <Button
                 primary={false}

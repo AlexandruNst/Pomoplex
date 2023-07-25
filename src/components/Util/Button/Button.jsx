@@ -1,6 +1,8 @@
 import './Button.scss'
-import spotify from '../../../assets/spotify.svg'
-import youtube from '../../../assets/youtube.svg'
+import spotify_primary from '../../../assets/spotify-primary.svg'
+import youtube_primary from '../../../assets/youtube-primary.svg'
+import spotify_secondary from '../../../assets/spotify-secondary.svg'
+import youtube_secondary from '../../../assets/youtube-secondary.svg'
 
 const symbolNames = {
     pause: "pause",
@@ -12,6 +14,9 @@ const symbolNames = {
 }
 
 export default function Button(props) {
+    console.log(props.img)
+    console.log(props.primary)
+    console.log("////")
     return (
         <button
             className={
@@ -32,7 +37,19 @@ export default function Button(props) {
             }
 
             {props.img &&
-                (props.img === "spotify" ? <img src={spotify} alt="" /> : <img src={youtube} alt="" />)
+                (props.primary ?
+                    (props.img === "spotify" ?
+                        <img src={spotify_primary} alt="" />
+                        :
+                        <img src={youtube_primary} alt="" />
+                    )
+                    :
+                    (props.img === "spotify" ?
+                        <img src={spotify_secondary} alt="" />
+                        :
+                        <img src={youtube_secondary} alt="" />
+                    )
+                )
             }
 
         </button>
