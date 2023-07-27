@@ -14,9 +14,6 @@ const symbolNames = {
 }
 
 export default function Button(props) {
-    console.log(props.img)
-    console.log(props.primary)
-    console.log("////")
     return (
         <button
             className={

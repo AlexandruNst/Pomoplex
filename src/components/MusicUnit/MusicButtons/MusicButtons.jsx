@@ -1,70 +1,23 @@
 import "./MusicButtons.scss"
 import Button from '../../Util/Button/Button'
-import { useState } from "react"
 
-export default function MusicButtons() {
-
-    const [channel, setChannel] = useState("spotify")
-
-    function setChannelToSpotify() {
-        setChannel("spotify")
-    }
-
-    function setChannelToYoutube() {
-        setChannel("youtube")
-    }
-
+export default function MusicButtons(props) {
     return (
         <div className="music-buttons">
-            {/* {channel === "spotify" &&
-                <>
-                    <Button
-                        primary={true}
-                        img={"spotify"}
-                        handleClick={setChannelToSpotify}
-                    />
-                    <Button
-                        primary={false}
-                        img={"youtube"}
-                        handleClick={setChannelToYoutube}
-                    />
-                </>
-            }
-
-            {channel === "youtube" &&
-                <>
-                    <Button
-                        primary={false}
-                        img={"spotify"}
-                        handleClick={setChannelToSpotify}
-                    />
-                    <Button
-                        primary={true}
-                        img={"youtube"}
-                        handleClick={setChannelToYoutube}
-                    />
-                </>
-            } */}
-
             <Button
-                primary={channel === "spotify" ? true : false}
+                primary={props.channel === "spotify" ? true : false}
                 img={"spotify"}
-                handleClick={setChannelToSpotify}
+                handleClick={() => props.setChosenChannel("spotify")}
+                displayInfo={props.displaySpotifyInfo}
+                undisplayInfo={props.undisplayInfo}
             />
             <Button
-                primary={channel === "youtube" ? true : false}
+                primary={props.channel === "youtube" ? true : false}
                 img={"youtube"}
-                handleClick={setChannelToYoutube}
+                handleClick={() => props.setChosenChannel("youtube")}
+                displayInfo={props.displayYoutubeInfo}
+                undisplayInfo={props.undisplayInfo}
             />
-
-            {/* <Button
-                primary={false}
-                img={"spotify"}
-            />
-            <Button
-                primary={true}
-                img={"youtube"}
-            /> */}
         </div>
     )
 }
