@@ -7,7 +7,7 @@ import SpotifyStream from "../SpotifyStream/SpotifyStream"
 import YoutubeStream from "../YoutubeStream/YoutubeStream"
 
 export default function Music() {
-    const [channel, setChannel] = useState("spotify")
+    const [channel, setChannel] = useState("youtube")
     const [showInfo, setShowInfo] = useState(false)
     const [info, setInfo] = useState("Spotify")
 
@@ -47,9 +47,6 @@ export default function Music() {
                 showInfo={showInfo}
                 info={info}
             />
-            {/* <section className="streaming">
-                <Spotify link="https://open.spotify.com/album/1pgFg0Ikr5FxCxkbHpDGjC?si=bAPGYj26Rl2KfctAz9ooqQ" />
-            </section> */}
             {channel === "spotify" ? <SpotifyStream /> : <YoutubeStream />}
 
         </div>

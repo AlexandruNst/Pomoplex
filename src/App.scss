@@ -1,6 +1,6 @@
 .app-wrapper {
     // background-color: pink;
-    max-width: 70rem;
+    max-width: 80rem;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -18,11 +18,11 @@
 @media (min-width: 50em) {
     .app-wrapper {
         .pomo-tasks {
-            flex-basis: 59%;
+            flex-basis: 55%;
         }
 
         .music {
-            flex-basis: 39%;
+            flex-basis: 44%;
         }
     }
 }

@@ -1,5 +1,19 @@
+@import "../../../utilities/classes.scss";
+
 .spotify-stream-wrapper {
     iframe {
         width: 100%;
     }
+}
+
+.spotify-form {
+    @extend .form;
+}
+
+.change-section-spotify {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 5px 0;
+    cursor: pointer;
+    user-select: none;
 }

@@ -3,36 +3,10 @@
 
 .task-form {
     @extend .card;
+    @extend .form;
 
     .form-title {
         color: $off-white;
         margin-top: 0;
-    }
-
-    div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-
-        input {
-            width: 100%;
-            margin-right: 5%;
-            @extend .card;
-        }
-
-        button {
-            outline: none;
-            border: none;
-            border-radius: 10%;
-            padding: 10px;
-            cursor: pointer;
-            background-color: $off-white;
-            transition: all 0.1s linear;
-
-            &:hover {
-                background-color: $primary-colour;
-                color: $off-white;
-            }
-        }
     }
 }
