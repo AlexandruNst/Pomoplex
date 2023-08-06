@@ -100,7 +100,7 @@ export default function Pomodoro() {
     }, [timerTicking])
 
     return (
-        <section>
+        <section className="pomodoro-section">
             <PomodoroTimer
                 seconds={seconds}
                 toggleTimer={toggleTimer}

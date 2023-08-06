@@ -9,14 +9,15 @@
 
 .form {
     div {
-        width: 100%;
+        // width: 100%;
         display: flex;
         justify-content: space-between;
 
         input {
-            flex-grow: 1;
+            // flex-grow: 1;
             margin-right: 5%;
             @extend .card;
+            width: 100%;
         }
 
         button {
@@ -28,11 +29,25 @@
             cursor: pointer;
             background-color: $off-white;
             transition: all 0.1s linear;
+            flex-shrink: 0;
 
             &:hover {
                 background-color: $primary-colour;
                 color: $off-white;
             }
         }
+    }
+}
+
+.title {
+    color: $off-white;
+    font-weight: 700;
+    font-size: 40px;
+    margin: 0;
+}
+
+@media (min-width: 50em) {
+    .title {
+        font-size: 50px;
     }
 }

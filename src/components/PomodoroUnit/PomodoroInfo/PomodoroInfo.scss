@@ -1,13 +1,9 @@
 @import "../../../utilities/variables.scss";
+@import "../../../utilities/classes.scss";
 
 
 .pomodoro-info {
-    .title {
-        color: $off-white;
-        font-weight: 700;
-        font-size: 49px;
-        margin: 0;
-    }
+    @extend .title;
 
     .info {
         color: $off-white;

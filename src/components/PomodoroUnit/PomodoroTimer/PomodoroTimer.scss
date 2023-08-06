@@ -2,9 +2,15 @@
     .pomodoro--timer {
         font-family: 'Chivo Mono', monospace;
         font-weight: 700;
-        font-size: min(10vw, 150px);
+        font-size: min(15vw, 150px);
         text-align: center;
         margin: 0;
         color: #FFF;
+    }
+
+    @media (min-width: 50em) {
+        .pomodoro--timer {
+            font-size: min(10vw, 150px);
+        }
     }
 }
