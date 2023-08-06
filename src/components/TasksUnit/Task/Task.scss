@@ -10,8 +10,9 @@
     align-items: center;
 
     &.completed {
+        border: 1px solid $primary-colour;
+
         .task-text {
-            color: $primary-colour;
             text-decoration: line-through;
         }
 

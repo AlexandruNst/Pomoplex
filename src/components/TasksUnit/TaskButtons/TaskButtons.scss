@@ -3,4 +3,8 @@
     display: flex;
     cursor: pointer;
     user-select: none;
+
+    span {
+        margin-left: 5px;
+    }
 }
