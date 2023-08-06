@@ -1,9 +1,12 @@
 @import "../../../utilities/classes.scss";
+@import "../../../utilities/variables.scss";
 
 .spotify-stream-wrapper {
     iframe {
         width: 100%;
+        box-shadow: 0px 5px 14px 7px $primary-glow;
     }
+
 }
 
 .spotify-form {
