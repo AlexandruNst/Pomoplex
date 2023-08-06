@@ -42,40 +42,17 @@ export default function Pomodoro() {
         return minutes * 60
     }
 
-    function changeTimer(source, direction, margintude) {
-        if (source === "pomo") {
-            if (direction === "increase") {
-                if (margintude === "small") {
-                    incrementTimer(1);
-                } else {
-                    incrementTimer(5);
-                }
-            } else {
-                if (margintude === "small") {
-                    decrementTimer(1);
-                } else {
-                    decrementTimer(5);
-                }
-            }
-        }
-    }
-
-    function incrementTimer(quantity) {
-        const newTime = config.pomoTime + quantity
-        setConfig(oldConfig => ({
-            ...oldConfig,
-            pomoTime: newTime
-        }))
-        !timerTicking && setSeconds(minutesToSeconds(newTime))
-    }
-
-    function decrementTimer(quantity) {
-        const newTime = config.pomoTime - quantity > 1 ? config.pomoTime - quantity : 1
-        setConfig(oldConfig => ({
-            ...oldConfig,
-            pomoTime: newTime
-        }))
-        !timerTicking && setSeconds(minutesToSeconds(newTime))
+    function changeTimer(source, quantity) {
+        const timeToChange = (source === "pomo" ? config.pomoTime : config.breakTime) + quantity
+        const newTime = timeToChange > 1 ? timeToChange : 1
+        setConfig(oldConfig =>
+            source === "pomo" ?
+                ({ ...oldConfig, pomoTime: newTime })
+                :
+                ({ ...oldConfig, breakTime: newTime })
+        )
+        if (source === "pomo" && !timerTicking && inPomo) setSeconds(minutesToSeconds(newTime))
+        if (source === "break" && !timerTicking && !inPomo) setSeconds(minutesToSeconds(newTime))
     }
 
     useEffect(() => {
@@ -124,6 +101,7 @@ export default function Pomodoro() {
             {showConfig &&
                 <TimerConfig
                     minutes={config.pomoTime}
+                    break={config.breakTime}
                     changeTimer={changeTimer}
                 />
             }
