@@ -125,8 +125,6 @@ export default function Pomodoro() {
                 <TimerConfig
                     minutes={config.pomoTime}
                     changeTimer={changeTimer}
-                // incrementTimer={incrementTimer}
-                // decrementTimer={decrementTimer}
                 />
             }
             <hr />

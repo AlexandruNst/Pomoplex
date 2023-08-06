@@ -8,7 +8,6 @@ export default function PomodoroTimer(props) {
         const minutes = Math.floor(timerSeconds / 60)
         const seconds = timerSeconds % 60;
         const newTimer = `${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
-        // const newTimer = "asdasd"
         return newTimer
     }
 

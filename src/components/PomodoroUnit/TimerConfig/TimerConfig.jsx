@@ -7,7 +7,6 @@ export default function TimerConfig(props) {
             <div>
                 <p>Timer Config</p>
                 <p>(minutes)</p>
-                {/* Timer Config {props.minutes} */}
             </div>
             <div>
                 <p>Pomo Time</p>
@@ -29,8 +28,6 @@ export default function TimerConfig(props) {
                     <span className="material-symbols-outlined">keyboard_double_arrow_right</span>
                 </p>
             </div>
-            {/* <button onClick={props.decrementTimer}>less</button>
-            <button onClick={props.incrementTimer}>more</button> */}
         </div>
     )
 }
