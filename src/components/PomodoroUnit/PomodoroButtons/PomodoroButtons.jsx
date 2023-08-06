@@ -74,7 +74,6 @@ export default function PomodoroButtons(props) {
                 displayInfo={displayStartInfo}
                 undisplayInfo={undisplayStartInfo}
             />
-            {/* {showDisplayInfo && <aside>{info}</aside>} */}
             {showStartInfo && <aside>{startInfo}</aside>}
             {showResetInfo && <aside>{resetInfo}</aside>}
             {showConfigInfo && <aside>{configInfo}</aside>}
