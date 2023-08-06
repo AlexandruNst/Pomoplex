@@ -7,7 +7,7 @@ import SpotifyStream from "../SpotifyStream/SpotifyStream"
 import YoutubeStream from "../YoutubeStream/YoutubeStream"
 
 export default function Music() {
-    const [channel, setChannel] = useState("youtube")
+    const [channel, setChannel] = useState("spotify")
     const [showInfo, setShowInfo] = useState(false)
     const [info, setInfo] = useState("Spotify")
 

@@ -7,16 +7,7 @@ import TasksInfo from '../TasksInfo/TasksInfo';
 
 export default function Tasks() {
 
-    const [tasks, setTasks] = useState([
-        {
-            text: "Task a",
-            completed: false
-        },
-        {
-            text: "Task b",
-            completed: false
-        }
-    ])
+    const [tasks, setTasks] = useState([])
     const [showNewTask, setShowNewTask] = useState(false)
     const [showTaskButtonInfo, setShowTaskButtonInfo] = useState(false)
     const [taskButtonInfo, setTaskButtonInfo] = useState("")
