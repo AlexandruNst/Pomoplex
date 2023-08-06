@@ -9,12 +9,10 @@
 
 .form {
     div {
-        // width: 100%;
         display: flex;
         justify-content: space-between;
 
         input {
-            // flex-grow: 1;
             margin-right: 5%;
             @extend .card;
             width: 100%;
